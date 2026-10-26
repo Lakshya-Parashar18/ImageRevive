@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    /* Light theme palette */
+    --bg-main: #F5F3EE;
+    --bg-sidebar: #ECE9E2;
+    --bg-surface: #FFFFFF;
+    --bg-elevated: #FAF8F4;
+    --text-primary: #24262A;
+    --text-secondary: #62666D;
+    --text-muted: #858A91;
+    --border: #DFDCD4;
+    --border-strong: #C9C5BC;
+    --accent: #A96618;
+    --accent-hover: #8E5312;
+    --success: #39764D;
+    --error: #B54747;
+
+    --font-heading: 'Manrope', system-ui, -apple-system, sans-serif;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+  }
+
+  .dark {
+    /* Dark theme palette */
+    --bg-main: #17191C;
+    --bg-sidebar: #202328;
+    --bg-surface: #272B30;
+    --bg-elevated: #2D3238;
+    --text-primary: #F2F0EB;
+    --text-secondary: #A3A7AE;
+    --text-muted: #7E858E;
+    --border: #383D44;
+    --border-strong: #4A515A;
+    --accent: #E5A34D;
+    --accent-hover: #F0B564;
+    --success: #83B692;
+    --error: #D97777;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.015em;
+  }
+
+  code, kbd, samp, pre, .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+@theme {
+  --color-main: var(--bg-main);
+  --color-sidebar: var(--bg-sidebar);
+  --color-surface: var(--bg-surface);
+  --color-elevated: var(--bg-elevated);
+  --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-muted: var(--text-muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-success: var(--success);
+  --color-error: var(--error);
+
+  --font-heading: var(--font-heading);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+/* Custom technical darkroom range slider styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--border);
+  height: 6px;
+  border-radius: 9999px;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+input[type="range"]:focus {
+  background: var(--border-strong);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: 2px solid var(--bg-surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: transform 0.1s ease, background-color 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  background: var(--accent-hover);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: 2px solid var(--bg-surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: transform 0.1s ease, background-color 0.15s ease;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
+
+/* Technical grid background pattern utility */
+.technical-grid {
+  background-size: 20px 20px;
+  background-image: 
+    linear-gradient(to right, rgba(126, 133, 142, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(126, 133, 142, 0.08) 1px, transparent 1px);
+}
+
+/* KaTeX mathematical typography enhancements */
+.katex-math-wrapper {
+  color: var(--accent);
+}
+
+.katex-math-wrapper .katex-display {
+  margin: 0.35em 0;
+  text-align: left;
+}
+
+.katex-math-wrapper .katex {
+  font-size: 1.05em;
+  color: inherit;
+}
+
+.katex-math-wrapper .katex .text {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.dark .katex-math-wrapper {
+  color: #F0B564;
+}
+
+.katex-math-wrapper::-webkit-scrollbar {
+  height: 4px;
+}
+
