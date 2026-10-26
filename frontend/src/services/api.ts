@@ -7,7 +7,9 @@ import type {
   FFTResponse,
 } from '../types';
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+const rawBase = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+const cleanBase = rawBase.replace(/\/+$/, '');
+const API_BASE = cleanBase.endsWith('/api') ? cleanBase : `${cleanBase}/api`;
 
 async function handleResponse<T>(response: Response): Promise<T> {
   if (!response.ok) {

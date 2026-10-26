@@ -42,6 +42,14 @@ async def global_exception_handler(request: Request, exc: Exception):
 # Include the main router under /api
 app.include_router(router, prefix="/api")
 
+@app.get("/health")
+def root_health():
+    return {
+        "status": "healthy",
+        "app_name": "ImageRevive DIP Studio",
+        "version": "1.0.0"
+    }
+
 @app.get("/")
 def root():
     return {
